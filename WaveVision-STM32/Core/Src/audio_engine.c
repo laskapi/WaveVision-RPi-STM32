@@ -1,5 +1,5 @@
 #include "audio_engine.h"
-#include "stm32f4xx_hal.h" // Lub odpowiednia biblioteka dla Twojego chipu
+#include "stm32f4xx_hal.h"
 
 extern UART_HandleTypeDef huart2;
 
@@ -28,10 +28,17 @@ void AudioEngine_TransmitPacket(MessageType type, uint8_t* data, uint16_t size) 
     for (uint16_t i = 0; i < size; i++) {
         checksum ^= data[i];
     }
-
-    HAL_UART_Transmit(&huart2, (uint8_t*)&hdr, sizeof(AV_Header), 10);
+    /*HAL_StatusTypeDef res;
+    res = HAL_UART_Transmit(&huart2, (uint8_t*)&hdr, sizeof(AV_Header), 100);
+    if(res == HAL_OK) {
+        res = HAL_UART_Transmit(&huart2, data, size, 100);
+    }
+    if(res == HAL_OK) {
+        HAL_UART_Transmit(&huart2, &checksum, 1, 100);
+    }*/
+    HAL_UART_Transmit(&huart2, (uint8_t*)&hdr, sizeof(AV_Header), 100);
     HAL_UART_Transmit(&huart2, data, size, 100);
-    HAL_UART_Transmit(&huart2, &checksum, 1, 10);
+    HAL_UART_Transmit(&huart2, &checksum, 1, 100);
 }
 
 void AudioEngine_SimulateSignal(uint16_t* buffer, uint16_t size) {
