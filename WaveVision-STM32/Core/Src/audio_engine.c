@@ -6,7 +6,7 @@ extern UART_HandleTypeDef huart2;
 void AudioEngine_Init(void) {
 }
 
-uint16_t AudioEngine_CalculateAmplitude(uint16_t* buffer, uint16_t size) {
+uint16_t AudioEngine_CalculateAmplitude(const uint16_t* buffer, const uint16_t size) {
     uint16_t min = 4095;
     uint16_t max = 0;
 
@@ -36,6 +36,7 @@ void AudioEngine_TransmitPacket(MessageType type, uint8_t* data, uint16_t size) 
     if(res == HAL_OK) {
         HAL_UART_Transmit(&huart2, &checksum, 1, 100);
     }*/
+
     HAL_UART_Transmit(&huart2, (uint8_t*)&hdr, sizeof(AV_Header), 100);
     HAL_UART_Transmit(&huart2, data, size, 100);
     HAL_UART_Transmit(&huart2, &checksum, 1, 100);

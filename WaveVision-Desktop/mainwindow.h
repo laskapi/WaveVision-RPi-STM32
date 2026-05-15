@@ -2,13 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSerialPort>
-#include <QSerialPortInfo>
+#include <QThread>
+#include "serialworker.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
@@ -20,12 +18,11 @@ public:
 
 private slots:
     void onConnectPressed();
-    void readSerialData();
+    void updateGraph(AudioDataPtr samples);
 
 private:
     Ui::MainWindow *ui;
-    QSerialPort *serial;
-    QByteArray m_buffer;
-    void processPacket(const QByteArray &packet);
+    QThread *workerThread;
+    SerialWorker *worker;
 };
-#endif // MAINWINDOW_H
+#endif

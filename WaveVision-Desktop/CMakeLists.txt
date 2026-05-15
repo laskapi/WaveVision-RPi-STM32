@@ -11,7 +11,11 @@ qt_add_executable(WaveVision-Desktop
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    serialworker.h serialworker.cpp
+    protocol.h
+    waveformwidget.h waveformwidget.cpp
 )
+target_include_directories(WaveVision-Desktop PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(WaveVision-Desktop
     PRIVATE

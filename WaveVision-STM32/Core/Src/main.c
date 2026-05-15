@@ -38,7 +38,7 @@
 /* USER CODE BEGIN PV */
 uint16_t adc_buffer[AUDIO_BUF_SIZE];
 volatile uint8_t data_ready = 0;
-uint16_t current_amp = 0;
+volatile uint16_t current_amp = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -88,12 +88,17 @@ int main(void)
     /* USER CODE BEGIN WHILE */
     while (1)
     {
+
+
+
         if (data_ready)
         {
             AudioEngine_TransmitPacket(MSG_TYPE_AMPLITUDE, (uint8_t*)&current_amp, sizeof(current_amp));
             HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
             data_ready = 0;
         }
+
+
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */

@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="btnConnect">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>230</y>
+      <x>100</x>
+      <y>270</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -30,10 +30,33 @@
    <widget class="QPlainTextEdit" name="consoleOut">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>230</y>
+      <x>480</x>
+      <y>370</y>
       <width>231</width>
-      <height>241</height>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAmplitude">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>270</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="WaveformWidget" name="waveformWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>50</y>
+      <width>611</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
@@ -44,12 +67,20 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WaveformWidget</class>
+   <extends>QWidget</extends>
+   <header>waveformwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

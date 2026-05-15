@@ -22,7 +22,7 @@ typedef struct __attribute__((packed)) {
 } AV_Packet;
 
 void AudioEngine_Init(void);
-uint16_t AudioEngine_CalculateAmplitude(uint16_t* buffer, uint16_t size);
+uint16_t AudioEngine_CalculateAmplitude(const uint16_t* buffer, uint16_t size);
 void AudioEngine_TransmitPacket(MessageType type, uint8_t* data, uint16_t size);
 void AudioEngine_SimulateSignal(uint16_t* buffer, uint16_t size);
 
